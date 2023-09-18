@@ -105,7 +105,7 @@ public class Rol implements Serializable {
 
     @Override
     public String toString() {
-        return "mx.cimadevs.entidad.Rol[ idrol=" + idrol + " ]";
+        return "mx.cimadevs.entidad1.Rol[ idrol=" + idrol + " ]";
     }
     
 }

@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>mx.cimadevs</groupId>
-        <artifactId>Cimadevs_Profesores</artifactId>
+        <artifactId>cimadev1</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <artifactId>entidad</artifactId>
@@ -25,4 +25,5 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+    <name>entidad</name>
 </project>
