@@ -131,7 +131,7 @@ public class Profesor implements Serializable {
 
     @Override
     public String toString() {
-        return "mx.cimadevs.entidad.Profesor[ idprofesor=" + idprofesor + " ]";
+        return "mx.cimadevs.entidad1.Profesor[ idprofesor=" + idprofesor + " ]";
     }
     
 }

@@ -97,7 +97,7 @@ public class Asignacion implements Serializable {
 
     @Override
     public String toString() {
-        return "mx.cimadevs.entidad.Asignacion[ idasignacion=" + idasignacion + " ]";
+        return "mx.cimadevs.entidad1.Asignacion[ idasignacion=" + idasignacion + " ]";
     }
     
 }

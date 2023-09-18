@@ -150,7 +150,7 @@ public class Materia implements Serializable {
 
     @Override
     public String toString() {
-        return "mx.cimadevs.entidad.Materia[ idmateria=" + idmateria + " ]";
+        return "mx.cimadevs.entidad1.Materia[ idmateria=" + idmateria + " ]";
     }
     
 }

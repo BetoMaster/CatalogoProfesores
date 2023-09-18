@@ -129,7 +129,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "mx.cimadevs.entidad.Usuario[ idusuario=" + idusuario + " ]";
+        return "mx.cimadevs.entidad1.Usuario[ idusuario=" + idusuario + " ]";
     }
     
 }
