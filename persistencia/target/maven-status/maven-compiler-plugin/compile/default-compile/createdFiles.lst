@@ -1,0 +1,10 @@
+mx\cimadevs\DAO\AsignacionDAO.class
+mx\cimadevs\persistencia\AbstractDAO.class
+mx\cimadevs\DAO\RolDAO.class
+mx\cimadevs\DAO\MateriaDAO.class
+mx\cimadevs\DAO\ProfesorDAO.class
+mx\cimadevs\integracion\ServiceLocator.class
+mx\cimadevs\persistencia\InterfaceDAO.class
+test\test.class
+mx\cimadevs\DAO\UsuarioDAO.class
+mx\cimadevs\persistencia\HibernateUtil.class
