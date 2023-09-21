@@ -1,0 +1,131 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+
+
+.contenedor {
+    border-radius: 15px;
+    border: 2px solid black;
+   background-color: rgba(0, 122, 51, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribuye los elementos verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  height: 250px; /* Ajusta la altura según tus necesidades */
+}
+
+.escudo, .titulo {
+  width: 100%; /* Establece el ancho según tus necesidades */
+  text-align: center; /* Centra el contenido horizontalmente */
+}
+
+.escudo {
+  margin-top: 16px;
+  align-self: flex-start; /* Coloca el logo en la parte superior */
+}
+
+.titulo {
+  font-size: 14px;
+  margin-top: -21px;
+  color: white;
+  align-self: flex-end; /* Coloca el título en la parte inferior */
+}
+
+.logo{
+    width: 170px;
+    height: 170px;
+}
+
+.menu-container {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column; /* Apila las filas verticalmente */
+  align-items: center; /* Centra horizontalmente el menú */
+}
+
+.menu-row {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente las opciones en la fila */
+}
+
+.menu-item {
+  border-radius: 15px;
+  background-color: rgba(234, 170, 0, 1);
+  width: 280px; /* Ajusta el ancho de cada opción según tus necesidades */
+  height: 150px; /* Ajusta la altura de cada opción según tus necesidades */
+  border: 3px solid black; /* Añade un borde para resaltar las opciones */
+  text-align: center; /* Centra el texto horizontalmente */
+  line-height: 50px; /* Centra el texto verticalmente en cada opción */
+  margin: 8px; /* Añade un margen entre las opciones */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Agrega sombra */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre los botones */
+  transition: background-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  font-family: Arial, sans-serif;
+  font-size: 16px; 
+  font-weight: bold; 
+  text-decoration: none; 
+  color: black; 
+}
+
+.menu-item:hover {
+  font-size: 19px; 
+  width: 303px; /* Ajusta el ancho de cada opción según tus necesidades */
+  height: 155px;
+  box-shadow: 0px 2px 20px rgba(0, 122, 51, 0.8); /* Aumenta la sombra al pasar el mouse */
+}
+
+.opcion{
+    border: 2px solid black;
+    background-color: rgba(234, 170, 0, 1);
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.logoF{
+    width: 70px;
+    height: 70px;
+    margin-top: 3.4px;
+}
+
+.imagen{
+    float: left;
+    width: 20%;
+    text-align: center;
+}
+
+.Nom{
+  font-family: fantasy;
+  height: 100%;
+  float: right;
+  margin-right: 26%;
+  width: 50%;
+  text-align: center;
+  line-height: 79px;
+  font-size: 40px; /* Cambia el tamaño de fuente del título a grande */
+  white-space: nowrap; /* Evita el salto de línea en el texto largo */
+  overflow: hidden; /* Oculta el texto que no cabe en el contenedor */
+  text-overflow: ellipsis;
+}
+
+.regre .logoF{
+  border-radius: 40px;
+  border: 2px solid black;
+  box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.3); /* Agrega sombra */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre los botones */
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.logoF:hover{
+    width: 73px;
+    height: 73px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+
