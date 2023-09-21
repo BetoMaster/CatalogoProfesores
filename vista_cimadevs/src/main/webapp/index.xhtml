@@ -5,43 +5,30 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
-        <style>
-            table{
-                border-collapse: collapse;
-                text-align: center;
-            }
-            table tr, td, th {
-                border: 1px yellow solid;
-            }
-            body{
-                background-color: azure;
-            }
-            td, th{
-                padding: 4px
-            }
-            
-        </style>
+        <link href="resources/style.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-        <h:form>
-            <p:inputText />
-            <p:commandButton value="Registrar" />
-        </h:form>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Marcos</td>
-                    <td>Lizarraga</td>
-                </tr>
-            </tbody>
-            
-        </table>
+        <div class="contenedor">
+            <div class="escudo">
+                <p:graphicImage value="resources/escudo.png" class="logo" alt="hola"/>
+            </div>
+            <div class="titulo">
+                <h1>Universidad Autónoma de Baja California</h1>
+            </div>
+        </div>
+        <div class="menu-container">
+  <div class="menu-row">
+      <p:link outcome="altaP" value="Altas Profesores" class="menu-item"></p:link>
+      <p:link outcome="altaUA" value="Altas Unidades de Aprendizaje" class="menu-item"></p:link>
+      <p:link outcome="consultarP" value="Consulta Catalogo de Profesores" class="menu-item"></p:link>
+  </div>
+  <div class="menu-row">
+    <p:link outcome="modificarP" value="Modificar Profesor" class="menu-item"></p:link>
+    <p:link outcome="altaUA" value="Eliminar Profesor" class="menu-item"></p:link>
+  </div>
+</div>
+        
+        
     </h:body>
 </html>
 
