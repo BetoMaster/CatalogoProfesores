@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import mx.cimadevs.entidad.Materia;
 import mx.cimadevs.entidad.Profesor;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2023-09-21T13:01:47")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2023-09-21T16:10:20")
 @StaticMetamodel(Asignacion.class)
 public class Asignacion_ { 
 
