@@ -42,46 +42,32 @@ and open the template in the editor.
                 <h:panelGrid columns="2">
                     <p:outputLabel value="Nombre" class="lbl"/>
                     <p:inputText class="campos" required="true" value="#{profesorAltasBean.nombre}"/>
-                    
+
                     <p:outputLabel value="Apellido" class="lbl"/>
                     <p:inputText class="campos" required="true" value="#{profesorAltasBean.apellido}" />
-                    
+
                     <p:outputLabel value="RFC" class="lbl"/>
                     <p:inputText class="campos" required="true" value="#{profesorAltasBean.rfc}" />
-                    
-                    
+
+
                     <h:panelGroup/>
-                   
-                <p:commandButton value="Guardar" action="#{profesorAltasBean.guardarProfesor}" ajax="false" 
-                                 style="
-                                 border-radius: 19px;  
-                                 margin:8px; 
-                                 background-color: rgba(234, 170, 0, 1); 
-                                 color: black; 
-                                 height: 40px; 
-                                 width: 224px;
-                                 font-family: verdana;
-                                 "
-                                 onclick="PF('dlg1').show();"/>
-                <p:dialog header="Aviso" widgetVar="dlg1" minHeight="40">
-                    <h:outputText value="Registro Exitoso."/>
-                </p:dialog>
-                 </h:panelGrid>
-                    <p:outputLabel value="Nombre"/>
-                    <p:inputText required="true" value="#{profesorAltasBean.nombre}"/>
 
-                    <p:outputLabel value="Apellido"/>
-                    <p:inputText required="true" value="#{profesorAltasBean.apellido}" />
-
-                    <p:outputLabel value="RFC"/>
-                    <p:inputText required="true" value="#{profesorAltasBean.rfc}" />
+                    <p:commandButton value="Guardar" action="#{profesorAltasBean.guardarProfesor}" ajax="false" 
+                                     style="
+                                     border-radius: 19px;  
+                                     margin:8px; 
+                                     background-color: rgba(234, 170, 0, 1); 
+                                     color: black; 
+                                     height: 40px; 
+                                     width: 224px;
+                                     font-family: verdana;
+                                     "
+                                     onclick="PF('dlg1').show();"/>
+                    <p:dialog header="Aviso" widgetVar="dlg1" minHeight="40">
+                        <h:outputText value="Registro Exitoso."/>
+                    </p:dialog>
                 </h:panelGrid>
-                <p:commandButton value="Guardar" action="#{profesorAltasBean.guardarProfesor}" ajax="false" onclick="PF('dlg1').show();"/>
-                <p:dialog header="Aviso" widgetVar="dlg1" minHeight="40">
-                    <h:outputText value="Registro exitoso." />
-                </p:dialog>
             </p:panel>           
         </h:form>
-
     </body>
 </html>
