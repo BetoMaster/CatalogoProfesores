@@ -104,7 +104,7 @@ and open the template in the editor.
   font-family: fantasy;
   height: 100%;
   float: right;
-  margin-right: 26%;
+  margin-right: 25%;
   width: 50%;
   text-align: center;
   line-height: 79px;
@@ -128,4 +128,26 @@ and open the template in the editor.
     box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.6);
 }
 
+p:panel{
+    width: 400px;
+    height: 400px;
+}
 
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: beige;
+    border-radius: 15px;
+    border:1px solid black;
+}
+
+.campos{
+    margin: 8px;
+    height: 30px;
+}
+
+.lbl{
+    color: black;
+    font-family: verdana;
+}
