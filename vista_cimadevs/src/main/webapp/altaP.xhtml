@@ -9,7 +9,7 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>TODO supply a title</title>
+        <title>Registro de docentes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="resources/style.css" rel="stylesheet" type="text/css"/>
     </h:head>
@@ -30,19 +30,20 @@ and open the template in the editor.
             <p:panel header="Datos del profesor">
                 <h:panelGrid columns="2">
                     <p:outputLabel value="Nombre"/>
-                    <p:inputText required="true" value="a"/>
-                    
+                    <p:inputText required="true" value="#{profesorAltasBean.nombre}"/>
+
                     <p:outputLabel value="Apellido"/>
-                    <p:inputText required="true" value="a" />
-                    
+                    <p:inputText required="true" value="#{profesorAltasBean.apellido}" />
+
                     <p:outputLabel value="RFC"/>
-                    <p:inputText required="true" value="a" />
-                    
-                    
-                    <h:panelGroup/>
-                <p:commandButton value="Submit" action="variableAdrian" ajax="false"/>
+                    <p:inputText required="true" value="#{profesorAltasBean.rfc}" />
                 </h:panelGrid>
+                <p:commandButton value="Guardar" action="#{profesorAltasBean.guardarProfesor}" ajax="false" onclick="PF('dlg1').show();"/>
+                <p:dialog header="Aviso" widgetVar="dlg1" minHeight="40">
+                    <h:outputText value="Registro exitoso." />
+                </p:dialog>
             </p:panel>           
         </h:form>
+
     </body>
 </html>
