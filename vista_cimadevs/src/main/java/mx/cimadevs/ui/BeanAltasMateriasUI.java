@@ -1,16 +1,25 @@
 package mx.cimadevs.ui;
 
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import mx.cimadevs.DAO.MateriaDAO;
+
 import mx.cimadevs.entidad.Materia;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
+import mx.cimadevs.entidad.Asignacion;
+import mx.cimadevs.entidad.Profesor;
 
 @ManagedBean(name = "materiaAltasBean")
 @ViewScoped
-public class BeanAltasMateriasUI {
+public class BeanAltasMateriasUI implements Serializable {
 
     private String nombreDeLaMateria;
     private String horasClase;
@@ -18,9 +27,19 @@ public class BeanAltasMateriasUI {
     private String horasLaboratorio;
     Materia nuevaMateria = new Materia();
     MateriaDAO materiaDao = new MateriaDAO();
+    private List<SelectItem> materiasSelectItems;
+    private Integer materiaSeleccionada;
 
+    @PostConstruct
     public void init() {
+        // Cargar la lista de materias disponibles
+        List<Materia> materias = materiaDao.findAll();
+        materiasSelectItems = new ArrayList<>();
 
+        for (Materia materia : materias) {
+            materiasSelectItems.add(new SelectItem(materia.getIdmateria(), materia.getNombreDeLaMateria()));
+
+        }
     }
 
     public String getNombreDeLaMateria() {
@@ -55,20 +74,32 @@ public class BeanAltasMateriasUI {
         this.horasLaboratorio = horasLaboratorio;
     }
 
+    public List<SelectItem> getMateriasSelectItems() {
+        return materiasSelectItems;
+    }
+
+    public Integer getMateriaSeleccionada() {
+        return materiaSeleccionada;
+    }
+
+    public void setMateriaSeleccionada(Integer materiaSeleccionada) {
+        this.materiaSeleccionada = materiaSeleccionada;
+    }
+
     // Método para guardar la materia en la base de datos.
     public void guardarMateria() {
-       
+
         nuevaMateria.setNombreDeLaMateria(nombreDeLaMateria);
         nuevaMateria.setHorasClase(parseStringToDate(horasClase));
         nuevaMateria.setHorasTaller(parseStringToDate(horasTaller));
         nuevaMateria.setHorasLaboratorio(parseStringToDate(horasLaboratorio));
-        limpiarCampos();
-        materiaDao.save(nuevaMateria);
 
+        materiaDao.save(nuevaMateria);
+        limpiarCampos();
     }
 
     public void limpiarCampos() {
-        
+
         nombreDeLaMateria = "";
         horasClase = "";
         horasTaller = "";

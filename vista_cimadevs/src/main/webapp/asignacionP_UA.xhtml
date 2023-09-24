@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Asignación de Profesores a Materias</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="resources/style.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <body>
+        <div class="contenedor">
+            <div class="escudo">
+                <p:graphicImage value="resources/escudo.png" class="logo" alt="hola" />
+            </div>
+            <div class="titulo">
+                <h1>Universidad Autónoma de Baja California</h1>
+            </div>
+        </div>
+        <div class="opcion">
+            <p:link outcome="index.xhtml" class="regre"><div class="imagen"><img src="resources/atra.png" class="logoF"></img></div></p:link>
+            <div class="Nom">Asignación de Profesores a Materias</div>
+        </div>
+        <h:form class="formulario">
+            <p:panel header="Asignar Profesor a Materia"
+                     style="background-color: buttonface; 
+                     display: flex;
+                     flex-direction: column;
+                     align-items: center;
+                     height: 350px;
+                     margin: 7px;
+                     border-radius: 20px;
+                     border: 2px solid black;
+                     box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.6);
+                     font-family: verdana;
+                     text-align: center;">
+                <h:panelGrid columns="2">
+                    <h:form>
+                        <p:outputLabel for="profesor" value="Profesor" class="lbl" />
+                        <p:selectOneMenu id="profesor" class="campos" value="#{asignacionBean.idProfesorSeleccionado}">
+                            <f:selectItems value="#{asignacionBean.profesoresSelectItems}" />
+                        </p:selectOneMenu>
+
+                        <p:outputLabel for="materia" value="Unidad de Aprendizaje" class="lbl" />
+                        <p:selectOneMenu id="materia" class="campos" value="#{asignacionBean.idMateriaSeleccionada}">
+                            <f:selectItems value="#{asignacionBean.materiasSelectItems}" />
+                        </p:selectOneMenu>
+                    </h:form>
+                </h:panelGrid>
+
+                <p:commandButton value="Asignar" action="#{asignacionBean.guardarAsignacion}" ajax="false" 
+                                 style="box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2); 
+                                 cursor: pointer;
+                                 border-radius: 19px;  
+                                 margin: 8px; 
+                                 background-color: rgba(234, 170, 0, 1); 
+                                 color: black; 
+                                 height: 40px; 
+                                 width: 224px;
+                                 font-family: verdana;"
+                                 onclick="PF('dlg1').show();" />
+                <p:dialog header="Aviso" widgetVar="dlg1" minHeight="40">
+                    <h:outputText value="Asignación Exitosa." />
+                </p:dialog>
+            </p:panel>
+        </h:form>
+    </body>
+</html>
