@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Menú</title>
         <link href="resources/style.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
@@ -16,19 +16,20 @@
                 <h1>Universidad Autónoma de Baja California</h1>
             </div>
         </div>
-        <div class="menu-container">
-  <div class="menu-row">
-      <p:link outcome="altaP" value="Altas Profesores" class="menu-item"></p:link>
-      <p:link outcome="altaUA" value="Altas Unidades de Aprendizaje" class="menu-item"></p:link>
-      <p:link outcome="consultarP" value="Consulta Catalogo de Profesores" class="menu-item"></p:link>
-  </div>
-  <div class="menu-row">
-    <p:link outcome="modificarP" value="Modificar Profesor" class="menu-item"></p:link>
-    <p:link outcome="altaUA" value="Eliminar Profesor" class="menu-item"></p:link>
-  </div>
-</div>
-        
-        
+        <div class="opcion">
+            <div class="Nom">Menú</div>
+        </div>
+        <h:form class="formulario">
+            <div class="menu-row">
+                <p:link outcome="altaP" value="Altas Profesores" class="menu-item"></p:link>
+                <p:link outcome="altaUA" value="Altas Unidades de Aprendizaje" class="menu-item"></p:link>
+                <p:link outcome="consultarP" value="Catalogo de Profesores" class="menu-item"></p:link>
+            </div>
+            <div class="menu-row">
+                <p:link outcome="modificarP" value="Modificar Profesor" class="menu-item"></p:link>
+                <p:link outcome="altaUA" value="Eliminar Profesor" class="menu-item"></p:link>
+            </div>
+        </h:form>
     </h:body>
 </html>
 
