@@ -9,7 +9,8 @@
         <module>persistencia</module>
         <module>entidad</module>
       <module>vista_cimadevs</module>
-  </modules>
+        <module>negocio</module>
+    </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
