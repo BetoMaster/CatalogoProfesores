@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>TODO supply a title</title>
+        <title>Consulta de Profesores</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="resources/style.css" rel="stylesheet" type="text/css"/>
     </h:head>
-    <body>
+    <h:body>
         <div class="contenedor">
             <div class="escudo">
-                <p:graphicImage value="resources/escudo.png" class="logo"  alt="hola" />
+                <p:graphicImage value="resources/escudo.png" class="logo" alt="hola" />
             </div>
             <div class="titulo">
                 <h1>Universidad Autónoma de Baja California</h1>
             </div>
         </div>
         <div class="opcion">
-            <p:link outcome="index.xhtml" class="regre"><div class="imagen"><img src="resources/atra.png" class="logoF"></img></div></p:link>
+            <p:link outcome="index.xhtml" class="regre">
+                <div class="imagen">
+                    <img src="resources/atra.png" class="logoF" alt="Regresar" />
+                </div>
+            </p:link>
             <div class="Nom">Consulta Profesores</div>
         </div>
         <h:form class="formulario">
-            <p:panel header="Profesores"  
+            <p:panel header="Profesores"
                      style="background-color: buttonface; 
                      display: flex;
                      flex-direction: column;
@@ -40,29 +39,28 @@ and open the template in the editor.
                      box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.6);
                      font-family: verdana;
                      ">
-            
-                <p:dataTable id="tabla" value="a" var="p">
-                
+                             
+                <p:dataTable id="tabla" value="#{consultaprofesorbean.listaAsignaciones}" var="asignacion" sortBy="#{asignacion.idprofesor.nombre}">
                     <p:column headerText="ID" class="col">
-                    <p:outputLabel value="a"/>
-                </p:column>
+                        <h:outputText value="#{asignacion.idprofesor.idprofesor}" />
+                    </p:column>
                 
-                <p:column headerText="NOMBRE" class="col">
-                    <p:outputLabel value="a"/>
-                </p:column>
+                    <p:column headerText="NOMBRE" class="col">
+                        <h:outputText value="#{asignacion.idprofesor.nombre}" />
+                    </p:column>
                 
-                <p:column headerText="APELLIDO" class="col">
-                    <p:outputLabel value="a"/>
-                </p:column>
+                    <p:column headerText="APELLIDO" class="col">
+                        <h:outputText value="#{asignacion.idprofesor.apellido}" />
+                    </p:column>
                 
-                <p:column headerText="RFC" class="col">
-                    <p:outputLabel value="a"/>
-                </p:column>
+                    <p:column headerText="RFC" class="col">
+                        <h:outputText value="#{asignacion.idprofesor.rfc}" />
+                    </p:column>
                 
-                <p:column headerText="MATERIA(S)" class="col">
-                    <p:outputLabel value="a"/>
-                </p:column>
-            </p:dataTable>
+                    <p:column headerText="MATERIA(S)" class="col">
+                        <h:outputText value="#{asignacion.idmateria.nombreDeLaMateria}" />
+                    </p:column>
+                </p:dataTable>
                 <p:commandButton value="Actualizar" update="tabla" 
                                  style="background-color: rgba(234, 170, 0, 1); 
                                  color: black; 
@@ -71,9 +69,8 @@ and open the template in the editor.
                                  font-family: verdana;
                                  width: 150px;
                                  box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2); 
-                                 cursor: pointer;
-                                 "/>
+                                 cursor: pointer;"/>
             </p:panel>
         </h:form>
-    </body>
+    </h:body>
 </html>
