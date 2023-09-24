@@ -47,7 +47,7 @@ and open the template in the editor.
 
 .menu-row {
   display: flex;
-  justify-content: center; /* Centra horizontalmente las opciones en la fila */
+  justify-content: center; 
 }
 
 .menu-item {
@@ -104,13 +104,13 @@ and open the template in the editor.
   font-family: fantasy;
   height: 100%;
   float: right;
-  margin-right: 25%;
+  margin-right: 23%;
   width: 50%;
   text-align: center;
   line-height: 79px;
-  font-size: 40px; /* Cambia el tamaño de fuente del título a grande */
-  white-space: nowrap; /* Evita el salto de línea en el texto largo */
-  overflow: hidden; /* Oculta el texto que no cabe en el contenedor */
+  font-size: 40px;
+  white-space: nowrap; 
+  overflow: hidden; 
   text-overflow: ellipsis;
 }
 
@@ -148,7 +148,7 @@ p:panel{
 }
 
 .lbl{
-    color: black;
+    color: aqua;
     font-family: verdana;
 }
 

@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Registro de docentes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -38,6 +39,7 @@ and open the template in the editor.
                      border: 2px solid black;
                      box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.6);
                      font-family: verdana;
+                     text-align: center;
                      ">
                 <h:panelGrid columns="2">
                     <p:outputLabel value="Nombre" class="lbl"/>
@@ -49,7 +51,12 @@ and open the template in the editor.
                     <p:outputLabel value="RFC" class="lbl"/>
                     <p:inputText class="campos" required="true" value="#{profesorAltasBean.rfc}" />
 
-
+                    <p:outputLabel for="materia" class="lbl" value="Unidad de Aprendizaje" />
+                    <p:selectManyMenu id="materia"  value="a" class="campos">
+                        <f:selectItems value="a" var="mat" itemLabel="a" itemValue="a"/>
+                    </p:selectManyMenu>
+                    
+                    
                     <h:panelGroup/>
 
                     <p:commandButton value="Guardar" action="#{profesorAltasBean.guardarProfesor}" ajax="false" 
