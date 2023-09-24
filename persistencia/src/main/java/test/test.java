@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner; // Agrega la importación de la clase Scanner
 import mx.cimadevs.DAO.ProfesorDAO;
-import mx.cimadevs.DAO.UsuarioDAO;
 import mx.cimadevs.entidad.Profesor;
-import mx.cimadevs.entidad.Usuario;
+
 
 /**
  *
@@ -39,19 +38,12 @@ public class test {
         // Cerrar el Scanner al final del programa
         scanner.close();
 
-        List<Usuario> listaUsuarios = new ArrayList();
-        UsuarioDAO usuarioDao = new UsuarioDAO();
-        listaUsuarios = usuarioDao.findAll();
-
         List<Profesor> listaProfes = new ArrayList();
         ProfesorDAO profeDao = new ProfesorDAO();
         profeDao.save(nuevoProfesor);
 
         listaProfes = profeDao.findAll();
 
-        for (Usuario us : listaUsuarios) {
-            System.out.println("Correo: " + us.getCorreo());
-        }
         for (Profesor pf : listaProfes) {
             System.out.println("Nombre: " + pf.getNombre() + " " + pf.getApellido() + "\n" + "Rfc:" + pf.getRfc());
         }
