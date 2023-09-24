@@ -50,7 +50,6 @@ public class BeanAltasUI {
         nuevoProfesor.setNombre(nombre);
         nuevoProfesor.setApellido(apellido);
         nuevoProfesor.setRfc(rfc);
-
         profeDao.save(nuevoProfesor);
         limpiarCampos();
         

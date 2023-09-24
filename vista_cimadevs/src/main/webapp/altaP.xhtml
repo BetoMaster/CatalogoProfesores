@@ -49,7 +49,7 @@ and open the template in the editor.
                     <p:inputText class="campos" required="true" value="#{profesorAltasBean.apellido}" />
 
                     <p:outputLabel value="RFC" class="lbl"/>
-                    <p:inputText class="campos" required="true" value="#{profesorAltasBean.rfc}" />
+                    <p:inputText class="campos" maxlength="13" required="true" value="#{profesorAltasBean.rfc}" />
 
                     <p:outputLabel for="materia" class="lbl" value="Unidad de Aprendizaje" />
                     <p:selectManyMenu id="materia"   class="campos"> 
