@@ -40,6 +40,7 @@ and open the template in the editor.
                      box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.6);
                      font-family: verdana;
                      ">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                 <h:panelGrid columns="2">
                     <p:outputLabel class="lbl" value="Nombre UA"/>
                     <p:inputText class="campos" required="true" value="#{materiaAltasBean.nombreDeLaMateria}" />
@@ -65,14 +66,9 @@ and open the template in the editor.
                                      height: 40px; 
                                      width: 224px;
                                      font-family: verdana;
-                                     "
-                                     onclick="PF('dlg1').show(); "/>
-                    <p:dialog header="Aviso" widgetVar="dlg1" minHeight="120">
-                        <h:outputText value="Registro de la Unidad Acedemica Exitoso."/>
-                    </p:dialog>
+                                     "/>
                 </h:panelGrid>
             </p:panel>
         </h:form>
     </body>
 </html>
- 
