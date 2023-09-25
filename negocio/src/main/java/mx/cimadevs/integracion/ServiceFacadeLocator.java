@@ -8,7 +8,7 @@ package mx.cimadevs.integracion;
 import mx.cimadevs.facade.FacadeAsignacion;
 import mx.cimadevs.facade.FacadeMateria;
 import mx.cimadevs.facade.FacadeProfesor;
-
+import mx.cimadevs.facade.FacadeUsuario;
 
 /**
  *
@@ -19,6 +19,7 @@ public class ServiceFacadeLocator {
     private static FacadeAsignacion facadeAsignacion;
     private static FacadeMateria facadeMateria;
     private static FacadeProfesor facadeProfesor;
+    private static FacadeUsuario facadeUsuario;
     
     public static FacadeAsignacion getInstanceFacadeAsignacion() {
         if (facadeAsignacion == null) {
@@ -46,6 +47,14 @@ public class ServiceFacadeLocator {
             return facadeProfesor;
         }
     }
-
+    
+    public static FacadeUsuario getInstanceFacadeUsuario() {
+        if (facadeUsuario == null) {
+            facadeUsuario = new FacadeUsuario();
+            return facadeUsuario;
+        } else {
+            return facadeUsuario;
+        }
+    }
     
 }
