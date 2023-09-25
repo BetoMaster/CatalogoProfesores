@@ -50,6 +50,10 @@ public class BeanModificarUI implements Serializable{
         for (Materia materia : materias) {
             materiasSelectItems.add(new SelectItem(materia.getIdmateria(), materia.getNombreDeLaMateria()));
         }
+        
+        cargarAsignaciones();
+        initAsignacion(); // Inicializa la asignación aquí
+        
     }
 
     public Profesor getProfesor() {
@@ -141,10 +145,20 @@ public class BeanModificarUI implements Serializable{
     }
     //Aqui se hace la actualizacion de los datos de profesor unicamente, funciona perfecto solo falta hacer que se modifique id materia
     //en tabla asignacion
-     public void modificarProfesor(){
+     public void modificarProfesor() {
+    if (asignacion != null) {
         profeDao = new ProfesorDAO();
-        profeDao.update(profesor);
-        profesor = new Profesor();
+        profeDao.update(asignacion.getIdprofesor());
+        // Aquí puedes realizar otras operaciones si es necesario
+        asignacion = new Asignacion(); // Reinicializar asignacion si es necesario
+    } else {
+        // Manejo de error o registro de información de depuración
+        System.err.println("Error: La asignación es nula al intentar modificar al profesor.");
     }
+}
+
+    private void initAsignacion() {
+    asignacion = new Asignacion(); // Inicializa la asignación como un nuevo objeto
+}
      
 }
