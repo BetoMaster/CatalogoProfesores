@@ -16,6 +16,7 @@ import mx.cimadevs.entidad.Asignacion;
 @ManagedBean(name = "asignacionBean")
 @ViewScoped
 public class BeanAsignacionesUI implements Serializable {
+  // Declaración de variables 
 
     private Integer idasignacion;
     private Profesor idprofesor;
@@ -25,11 +26,12 @@ public class BeanAsignacionesUI implements Serializable {
     private List<SelectItem> materiasSelectItems;
     private Integer idProfesorSeleccionado;
     private Integer idMateriaSeleccionada;
-
+    
+    // Constructor
     public BeanAsignacionesUI() {
         asignacionDao = new AsignacionDAO();
     }
-
+ // Getters y setters
     public Integer getIdasignacion() {
         return idasignacion;
     }
@@ -53,6 +55,7 @@ public class BeanAsignacionesUI implements Serializable {
     public void setIdmateria(Materia idmateria) {
         this.idmateria = idmateria;
     }
+    // Método para obtener la lista de profesores como objetos SelectItem
 
     public List<SelectItem> getProfesoresSelectItems() {
         ProfesorDAO profesorDao = new ProfesorDAO();
@@ -65,6 +68,7 @@ public class BeanAsignacionesUI implements Serializable {
 
         return profesoresSelectItems;
     }
+    // Método para obtener la lista de materias como objetos SelectItem
 
     public List<SelectItem> getMateriasSelectItems() {
         MateriaDAO materiaDao = new MateriaDAO();
@@ -76,7 +80,7 @@ public class BeanAsignacionesUI implements Serializable {
 
         return materiasSelectItems;
     }
-
+    // Getters y setters para idMateriaSeleccionada
     public Integer getIdMateriaSeleccionada() {
         return idMateriaSeleccionada;
     }
@@ -88,10 +92,12 @@ public class BeanAsignacionesUI implements Serializable {
     public Integer getIdProfesorSeleccionado() {
         return idProfesorSeleccionado;
     }
-
+    
+    // Getters y setters para idProfesorSeleccionado
     public void setIdProfesorSeleccionado(Integer idProfesorSeleccionado) {
         this.idProfesorSeleccionado = idProfesorSeleccionado;
     }
+    // Método para guardar una nueva asignación
 
     public void guardarAsignacion() {
         MateriaDAO materiaDao = new MateriaDAO();
