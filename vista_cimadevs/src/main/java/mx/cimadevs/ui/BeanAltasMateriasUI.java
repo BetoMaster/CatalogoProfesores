@@ -40,7 +40,6 @@ public class BeanAltasMateriasUI implements Serializable {
 
         for (Materia materia : materias) {
             materiasSelectItems.add(new SelectItem(materia.getIdmateria(), materia.getNombreDeLaMateria()));
-
         }
     }
 
