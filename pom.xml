@@ -5,12 +5,7 @@
     <artifactId>cimadev1</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <modules>
-        <module>entidad</module>
-        <module>negocio</module>
-        <module>persistencia</module>
-        <module>vista_cimadevs</module>
-    </modules>
+    <modules></modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

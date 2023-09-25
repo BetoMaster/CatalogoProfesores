@@ -50,16 +50,16 @@ and open the template in the editor.
 
                     <p:outputLabel value="RFC" class="lbl"/>
                     <p:inputText class="campos" maxlength="13" required="true" value="#{profesorAltasBean.rfc}" />
-                   
-                    <p:outputLabel for="materia" class="lbl" value="Unidad de Aprendizaje" />
-                    <p:selectOneMenu id="materia" class="campos" value="#{materiaAltasBean.materiaSeleccionada}">
+                    <p:outputLabel for="materia" value="Unidad de Aprendizaje" class="lbl" />
+                    <p:selectOneMenu id="materia" class="campos" value="#{profesorAltasBean.materiaSeleccionada}">
                         <f:selectItems value="#{materiaAltasBean.materiasSelectItems}" />
                     </p:selectOneMenu>
-                    
+
+
 
 
                     <h:panelGroup/>
-                    
+
                     <p:commandButton value="Guardar" action="#{profesorAltasBean.guardarProfesor}" ajax="false" 
                                      style="
                                      box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2); 
