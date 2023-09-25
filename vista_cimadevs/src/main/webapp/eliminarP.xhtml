@@ -27,5 +27,84 @@ and open the template in the editor.
             <p:link outcome="index.xhtml" class="regre"><div class="imagen"><img src="resources/atra.png" class="logoF"></img></div></p:link>
             <div class="Nom">Eliminar Profesores</div>
         </div>
+        
+        <h:form class="formulario" id="formu">
+            <p:panel header="Profesores"
+                     style="background-color: buttonface; 
+                     display: flex;
+                     flex-direction: column;
+                     align-items: center;
+                     height: 550px;
+                     margin: 7px;
+                     border-radius: 20px;
+                     border: 2px solid black;
+                     box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.6);
+                     font-family: verdana;
+                     ">
+                
+                <p:dataTable id="tabla" value="#{EliminarProfesorBean.listaProfesores}" var="prof" sortBy="#{prof.idprofesor}" emptyMessage="No Existen Registros">
+                    <p:column headerText="ID Profesor" class="col">
+                        <h:outputText value="#{prof.idprofesor}" />
+                    </p:column>
+                
+                    <p:column headerText="NOMBRE" class="col">
+                        <h:outputText value="#{prof.nombre}" />
+                    </p:column>
+                
+                    <p:column headerText="APELLIDO" class="col">
+                        <h:outputText value="#{prof.apellido}" />
+                    </p:column>
+                
+                    <p:column headerText="RFC" class="col">
+                        <h:outputText value="#{prof.rfc}" />
+                    </p:column>
+                    
+                    <p:column class="col">
+                        <p:commandButton value="Eliminar" oncomplete="PF('dlgEliminar').show();" update=":formEliminar" style="background-color: rgba(234, 170, 0, 1); 
+                                 color: black; 
+                                 margin-top: 7px; 
+                                 border-radius: 15px;
+                                 font-family: verdana;
+                                 width: 150px;
+                                 box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2); 
+                                 cursor: pointer;">
+                            <f:setPropertyActionListener target="#{EliminarProfesorBean.profesor}" value="#{prof}" />
+                        </p:commandButton>
+                    </p:column>
+                     
+                </p:dataTable>
+                <p:commandButton value="Actualizar" update="tabla"
+                                 style="background-color: rgba(234, 170, 0, 1); 
+                                 color: black; 
+                                 margin-top: 7px; 
+                                 border-radius: 15px;
+                                 font-family: verdana;
+                                 width: 150px;
+                                 box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2); 
+                                 cursor: pointer;"/>
+            </p:panel>
+        </h:form>    
+        
+         <p:dialog id="dlg" header="Eliminar Profesor" widgetVar="dlgEliminar" showEffect="explode" hideEffect="explode" modal="true">
+             <h:form id="formEliminar">
+                <h:outputText value="¿Desea eliminar este registro?" style="color:black;"/>
+                <p:commandButton  value="Si" actionListener="#{EliminarProfesorBean.eliminarProfesor()}" update=":formu" oncomplete="PF('dlgEliminar').hide();" style="
+                                  background-color: rgba(234, 170, 0, 1); 
+                                  color: black;
+                                  font-family: verdana;
+                                  margin: 7px;
+                                  " onclick="PF('dlg1').show();"/>
+            
+                <p:commandButton value='No' onclick="PF('dlgEliminar').hide()" style="
+                                 background-color: rgba(234, 170, 0, 1); 
+                                 color: black;
+                                 font-family: verdana;
+                                  "/>
+            </h:form>
+        </p:dialog>
+        
+        <p:dialog header="Aviso" widgetVar="dlg1" minHeight="40" showEffect="explode" hideEffect="explode" modal="true">
+                        <h:outputText value="Eliminacion Exitosa."/>
+                    </p:dialog>
     </body>
 </html>

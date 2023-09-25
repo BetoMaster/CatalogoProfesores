@@ -88,6 +88,18 @@ and open the template in the editor.
     border-radius: 15px;
 }
 
+.opcion2{
+    border: 2px solid black;
+    background-color: rgba(234, 170, 0, 1);
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .logoF{
     width: 70px;
     height: 70px;
@@ -104,7 +116,19 @@ and open the template in the editor.
   font-family: fantasy;
   height: 100%;
   float: right;
-  margin-right: 23%;
+  margin-right: 25.4%;
+  width: 50%;
+  text-align: center;
+  line-height: 79px;
+  font-size: 40px;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+}
+
+.Nom2{
+  font-family: fantasy;
+  height: 100%;
   width: 50%;
   text-align: center;
   line-height: 79px;
@@ -148,7 +172,7 @@ p:panel{
 }
 
 .lbl{
-    color: aqua;
+    color: black;
     font-family: verdana;
 }
 
@@ -159,4 +183,6 @@ p:panel{
 #tabla{
     color: black;
 }
+
+
 

@@ -27,42 +27,54 @@ and open the template in the editor.
             <p:link outcome="index.xhtml" class="regre"><div class="imagen"><img src="resources/atra.png" class="logoF"></img></div></p:link>
             <div class="Nom">Modificar Profesores</div>
         </div>
-        <h:form class="formulario">
-            <p:panel header="Profesores"  
+        <h:form class="formulario" id="formDatos">
+            <p:panel header="Profesores"
                      style="background-color: buttonface; 
                      display: flex;
                      flex-direction: column;
                      align-items: center;
-                     height: 290px;
+                     height: 490px;
                      margin: 7px;
                      border-radius: 20px;
                      border: 2px solid black;
                      box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.6);
                      font-family: verdana;
                      ">
-            
-                <p:dataTable id="tabla" value="a" var="p">
+                <!--Aqui se extraen los datos de la lista profesor -->
+                <p:dataTable id="tabla"  value="#{ModificarProfesorBean.listaProfesores}" var="asig" sortBy="#{asig.nombre}">
+                    <p:column headerText="ID Profesor" class="col">
+                        <h:outputText value="#{asig.idprofesor}" />
+                    </p:column>
                 
-                    <p:column headerText="ID" class="col">
-                    <p:outputLabel value="a"/>
-                </p:column>
+                    <p:column headerText="NOMBRE" class="col">
+                        <h:outputText value="#{asig.nombre}" />
+                    </p:column>
                 
-                <p:column headerText="NOMBRE" class="col">
-                    <p:outputLabel value="a"/>
-                </p:column>
+                    <p:column headerText="APELLIDO" class="col">
+                        <h:outputText value="#{asig.apellido}" />
+                    </p:column>
                 
-                <p:column headerText="APELLIDO" class="col">
-                    <p:outputLabel value="a"/>
-                </p:column>
-                
-                <p:column headerText="RFC" class="col">
-                    <p:outputLabel value="a"/>
-                </p:column>
-                
-                <p:column headerText="MATERIAS" class="col">
-                    <p:outputLabel value="a"/>
-                </p:column>
-            </p:dataTable>
+                    <p:column headerText="RFC" class="col">
+                        <h:outputText value="#{asig.rfc}" />
+                    </p:column>
+                    
+                <!--Esto es lo de la busqueda para que funcione tendria que tener lo de listaAsignaciones.Idmateria.nombreMateria -->
+                    <!--
+                    <p:column headerText="MATERIA(S)" class="col" filterBy="#{asig.idmateria.nombreMateria}" filterMatchMode="contains">
+                        <h:outputText value="#{asig.idmateria.nombreDeLaMateria}" />
+                     </p:column>
+                    -->
+                    
+                    <!--Aqui es donde se mandan los datos de los profesores a lasa -->
+                    <p:column  class="col">
+                        <p:commandButton value="Modificar" oncomplete="PF('dlgModificar').show();" update=":formModificar" style="background-color: rgba(234, 170, 0, 1);border-radius: 15px;
+                                 font-family: verdana; cursor: pointer; color:black;">
+                            <f:setPropertyActionListener target="#{ModificarProfesorBean.profesor}" value="#{asig}"/>
+                        </p:commandButton>
+                    </p:column>
+                    
+                    
+                </p:dataTable>
                 <p:commandButton value="Actualizar" update="tabla" 
                                  style="background-color: rgba(234, 170, 0, 1); 
                                  color: black; 
@@ -71,9 +83,47 @@ and open the template in the editor.
                                  font-family: verdana;
                                  width: 150px;
                                  box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2); 
-                                 cursor: pointer;
-                                 "/>
+                                 cursor: pointer;"/>
             </p:panel>
-        </h:form>v
+        </h:form>
+        
+        <!--Este es el form que aparece para que modifiques los datos -->
+        <p:dialog id="dlgMod" header="Modificar Datos" widgetVar="dlgModificar" showEffect="explode" hideEffect="explode" modal="true">
+            <h:form id="formModificar">
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="Nombre" class="lbl"/>
+                    <p:inputText class="campos" required="true" value="#{ModificarProfesorBean.profesor.nombre}"/>
+
+                    <p:outputLabel value="Apellido" class="lbl"/>
+                    <p:inputText class="campos" required="true" value="#{ModificarProfesorBean.profesor.apellido}" />
+
+                    <p:outputLabel value="RFC" class="lbl"/>
+                    <p:inputText class="campos" maxlength="13" required="true" value="#{ModificarProfesorBean.profesor.rfc}" />
+                    <p:outputLabel for="materia" value="Unidad de Aprendizaje" class="lbl" />
+                    <p:selectOneMenu id="materia" class="campos" value="#{ModificarProfesorBean.materiaSeleccionada}">
+                        <f:selectItems value="#{ModificarProfesorBean.materiasSelectItems}" />
+                    </p:selectOneMenu>
+
+                    <h:panelGroup/>
+                    
+                    <p:column>
+                    
+                    <!--Aqui se hace la actualizacion -->
+                    <p:commandButton value="Guardar" action="#{ModificarProfesorBean.modificarProfesor()}" ajax="false"
+                                     onclick="PF('dlg1').show();" 
+                                     update=":formDatos:tabla" style="background-color: rgba(234, 170, 0, 1);border-radius: 15px;
+                                 font-family: verdana; cursor: pointer; color: black;"/>
+                    
+                    <p:commandButton value="Cancelar" onclick="PF('dlgModificar').hide();" update=":formDatos" style="background-color: rgba(234, 170, 0, 1);border-radius: 15px;
+                                 font-family: verdana; cursor: pointer; color: black;"/>
+                    
+                    </p:column>
+                    
+                    <p:dialog header="Aviso" widgetVar="dlg1" minHeight="40">
+                        <h:outputText value="Modificacion Exitosa."/>
+                    </p:dialog>
+                </h:panelGrid>       
+        </h:form>
+        </p:dialog>
     </body>
 </html>
