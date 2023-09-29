@@ -3,28 +3,42 @@ package mx.cimadevs.ui;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import mx.cimadevs.DAO.ProfesorDAO;
-import mx.cimadevs.DAO.AsignacionDAO;
 import mx.cimadevs.entidad.Asignacion;
 import mx.cimadevs.entidad.Materia;
 import mx.cimadevs.entidad.Profesor;
+import mx.cimadevs.helper.AsignacionHelper;
+import mx.cimadevs.helper.profesorHelper;
 
 @ManagedBean(name = "profesorAltasBean")
 @ViewScoped
 public class BeanAltasUI implements Serializable {
-
+    
+    
+    
+    profesorHelper profHelp;
+    AsignacionHelper asigHelp;
     private String nombre;
     private String apellido;
     private String rfc;
     Profesor nuevoProfesor = new Profesor();
-    ProfesorDAO profeDao = new ProfesorDAO();
     Integer idProfesorRegistrado;
     private Integer materiaSeleccionada;
 
     public void init() {
-
+        profHelp = new profesorHelper();
+        asigHelp = new AsignacionHelper();
     }
 
+    public profesorHelper getProfHelp() {
+        return profHelp;
+    }
+
+    public void setProfHelp(profesorHelper profHelp) {
+        this.profHelp = profHelp;
+    }
+    
+    
+    
     public String getNombre() {
         return nombre;
     }
@@ -70,8 +84,9 @@ public class BeanAltasUI implements Serializable {
         nuevoProfesor.setNombre(nombre);
         nuevoProfesor.setApellido(apellido);
         nuevoProfesor.setRfc(rfc);
-
-        profeDao.save(nuevoProfesor);
+        
+        profesorHelper profHelp2 = new profesorHelper();
+        profHelp2.guardarProfesor(nuevoProfesor);
 
         idProfesorRegistrado = nuevoProfesor.getIdprofesor();
 
@@ -80,8 +95,8 @@ public class BeanAltasUI implements Serializable {
         nuevaAsignacion.setIdprofesor(new Profesor(idProfesorRegistrado)); // Usar el ID del profesor
         nuevaAsignacion.setIdmateria(new Materia(materiaSeleccionada)); // Usar la materia seleccionada
 
-        AsignacionDAO asignacionDao = new AsignacionDAO();
-        asignacionDao.save(nuevaAsignacion);
+        AsignacionHelper asigHelp2 = new AsignacionHelper();
+        asigHelp2.guardarAsignacion(nuevaAsignacion);
 
         limpiarCampos();
     }

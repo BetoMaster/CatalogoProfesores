@@ -12,6 +12,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import mx.cimadevs.DAO.AsignacionDAO;
 import mx.cimadevs.entidad.Asignacion;
+import mx.cimadevs.helper.AsignacionHelper;
+import mx.cimadevs.helper.MateriaHelper;
+import mx.cimadevs.helper.profesorHelper;
 
 @ManagedBean(name = "asignacionBean")
 @ViewScoped
@@ -25,6 +28,9 @@ public class BeanAsignacionesUI implements Serializable {
     private List<SelectItem> materiasSelectItems;
     private Integer idProfesorSeleccionado;
     private Integer idMateriaSeleccionada;
+    private profesorHelper profeHelp;
+    private AsignacionHelper asigHelp;
+    private MateriaHelper matHelp;
 
     public BeanAsignacionesUI() {
         asignacionDao = new AsignacionDAO();
@@ -56,7 +62,8 @@ public class BeanAsignacionesUI implements Serializable {
 
     public List<SelectItem> getProfesoresSelectItems() {
         ProfesorDAO profesorDao = new ProfesorDAO();
-        List<Profesor> profesores = profesorDao.findAll();
+        profeHelp = new profesorHelper();
+        List<Profesor> profesores = profeHelp.obteneProfesor();
 
         profesoresSelectItems = new ArrayList<>();
         for (Profesor profesor : profesores) {
@@ -67,8 +74,8 @@ public class BeanAsignacionesUI implements Serializable {
     }
 
     public List<SelectItem> getMateriasSelectItems() {
-        MateriaDAO materiaDao = new MateriaDAO();
-        List<Materia> materias = materiaDao.findAll();
+        matHelp = new MateriaHelper();
+        List<Materia> materias = matHelp.obtenerMaterias();
         materiasSelectItems = new ArrayList<>();
         for (Materia materia : materias) {
             materiasSelectItems.add(new SelectItem(materia.getIdmateria(), materia.getNombreDeLaMateria()));

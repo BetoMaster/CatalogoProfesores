@@ -34,6 +34,13 @@ public class DelegateAsignacion {
         ServiceLocator.getInstanceAsignacionDAO().save(asignacion);
     } 
     
+    public List<Asignacion> obtenerAsignacion() {
+        return ServiceLocator.getInstanceAsignacionDAO().findAll();
+    }
+    
+    public void updateAsignacion(Asignacion asignacion){
+        ServiceLocator.getInstanceAsignacionDAO().update(asignacion);
+    }
 }
 
 

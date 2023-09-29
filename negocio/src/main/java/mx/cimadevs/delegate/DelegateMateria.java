@@ -33,4 +33,8 @@ public class DelegateMateria {
         ServiceLocator.getInstanceMateriaDAO().save(materia);
     } 
     
+    public List<Materia> obtenerMaterias() {
+        return ServiceLocator.getInstanceMateriaDAO().findAll();
+    }
+    
 }

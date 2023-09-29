@@ -16,29 +16,33 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import mx.cimadevs.entidad.Asignacion;
 import mx.cimadevs.entidad.Profesor;
+import mx.cimadevs.helper.MateriaHelper;
 
 @ManagedBean(name = "materiaAltasBean")
 @ViewScoped
 public class BeanAltasMateriasUI implements Serializable {
-
+    
+    private MateriaHelper matHelp;
     private String nombreDeLaMateria;
     private String horasClase;
     private String horasTaller;
     private String horasLaboratorio;
     Materia nuevaMateria = new Materia();
-    MateriaDAO materiaDao = new MateriaDAO();
     private List<SelectItem> materiasSelectItems;
     private Integer materiaSeleccionada;
 
     @PostConstruct
     public void init() {
         // Cargar la lista de materias disponibles
-        List<Materia> materias = materiaDao.findAll();
+        matHelp = new MateriaHelper();
+        List<Materia> materias = matHelp.obtenerMaterias();
         materiasSelectItems = new ArrayList<>();
 
         for (Materia materia : materias) {
             materiasSelectItems.add(new SelectItem(materia.getIdmateria(), materia.getNombreDeLaMateria()));
         }
+        
+        
     }
 
     public String getNombreDeLaMateria() {
@@ -92,8 +96,9 @@ public class BeanAltasMateriasUI implements Serializable {
         nuevaMateria.setHorasClase(parseStringToDate(horasClase));
         nuevaMateria.setHorasTaller(parseStringToDate(horasTaller));
         nuevaMateria.setHorasLaboratorio(parseStringToDate(horasLaboratorio));
-
-        materiaDao.save(nuevaMateria);
+        
+        matHelp = new MateriaHelper();
+        matHelp.guardarMateria(nuevaMateria);
         limpiarCampos();
     }
 
