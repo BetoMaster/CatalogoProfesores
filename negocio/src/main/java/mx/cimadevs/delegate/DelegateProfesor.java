@@ -33,4 +33,16 @@ public class DelegateProfesor {
         ServiceLocator.getInstanceProfesorDAO().save(profesor);
     } 
     
+     public List<Profesor> obtenerProfesores() {
+        List<Profesor> profesores = ServiceLocator.getInstanceProfesorDAO().findAll();
+            return profesores;
+    }
+
+    public void updateProfesor(Profesor profesor) {
+        ServiceLocator.getInstanceProfesorDAO().update(profesor);
+    }
+
+    public void deleteProfesor(Profesor profesor) {
+        ServiceLocator.getInstanceProfesorDAO().delete(profesor);
+    }
 }

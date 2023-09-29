@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package mx.cimadevs.facade;
+import java.util.List;
 import mx.cimadevs.delegate.DelegateMateria;
 import mx.cimadevs.entidad.Materia;
 /**
@@ -22,4 +23,7 @@ public class FacadeMateria {
         delegateMateria.saveMateria(materia);
     }
     
+    public List<Materia> obtenerMateria(){
+        return delegateMateria.obtenerMaterias();
+    }
 }

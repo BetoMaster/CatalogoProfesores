@@ -15,19 +15,21 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import mx.cimadevs.entidad.Asignacion;
+import mx.cimadevs.entidad.Profesor;
+import mx.cimadevs.helper.MateriaHelper;
 
 @ManagedBean(name = "materiaAltasBean")
 @ViewScoped
 //Esto significa que la instancia del bean estará disponible para la vista y mantendrá su estado durante la duración de la vista.
 public class BeanAltasMateriasUI implements Serializable {
-
-    // Aquí se declaran las propiedades que el bean va a utilizar para almacenar los datos ingresados en el formulario.
+    
+    private MateriaHelper matHelp;
     private String nombreDeLaMateria;
     private String horasClase;
     private String horasTaller;
     private String horasLaboratorio;
     Materia nuevaMateria = new Materia();
-    MateriaDAO materiaDao = new MateriaDAO();
     private List<SelectItem> materiasSelectItems;
     private Integer materiaSeleccionada;
 
@@ -35,12 +37,15 @@ public class BeanAltasMateriasUI implements Serializable {
     @PostConstruct
     public void init() {
         // Cargar la lista de materias disponibles
-        List<Materia> materias = materiaDao.findAll();
+        matHelp = new MateriaHelper();
+        List<Materia> materias = matHelp.obtenerMaterias();
         materiasSelectItems = new ArrayList<>();
 
         for (Materia materia : materias) {
             materiasSelectItems.add(new SelectItem(materia.getIdmateria(), materia.getNombreDeLaMateria()));
         }
+        
+        
     }
 
     // Getters y setters para las propiedades del bean
@@ -93,30 +98,14 @@ public class BeanAltasMateriasUI implements Serializable {
     private boolean validarCampos() {
         boolean camposValidos = true;
 
-        if (nombreDeLaMateria == null || nombreDeLaMateria.isEmpty()) {
-            FacesContext.getCurrentInstance().addMessage("globalMessages",
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "El campo Nombre es obligatorio", null));
-            camposValidos = false;
-        }
-
-        if (horasClase == null || horasClase.isEmpty()) {
-            FacesContext.getCurrentInstance().addMessage("globalMessages",
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "El campo Horas de Clase es obligatorio", null));
-            camposValidos = false;
-        }
-
-        if (horasTaller == null || horasTaller.isEmpty()) {
-            FacesContext.getCurrentInstance().addMessage("globalMessages",
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "El campo Horas de Taller es obligatorio", null));
-            camposValidos = false;
-        }
-        if (horasLaboratorio == null || horasLaboratorio.isEmpty()) {
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "El campo Horas de Laboratorio es obligatorio", null));
-            camposValidos = false;
-        }
-
-        return camposValidos;
+        nuevaMateria.setNombreDeLaMateria(nombreDeLaMateria);
+        nuevaMateria.setHorasClase(parseStringToDate(horasClase));
+        nuevaMateria.setHorasTaller(parseStringToDate(horasTaller));
+        nuevaMateria.setHorasLaboratorio(parseStringToDate(horasLaboratorio));
+        
+        matHelp = new MateriaHelper();
+        matHelp.guardarMateria(nuevaMateria);
+        limpiarCampos();
     }
 
     /* Método para guardar la materia en la base de datos. ste método se llama cuando se presiona el botón "Guardar" en la vista. 

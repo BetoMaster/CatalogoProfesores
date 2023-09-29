@@ -4,22 +4,20 @@ import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import mx.cimadevs.DAO.ProfesorDAO;
-import mx.cimadevs.DAO.AsignacionDAO;
 import mx.cimadevs.entidad.Asignacion;
 import mx.cimadevs.entidad.Materia;
 import mx.cimadevs.entidad.Profesor;
+import mx.cimadevs.helper.AsignacionHelper;
+import mx.cimadevs.helper.profesorHelper;
 
 @ManagedBean(name = "profesorAltasBean")
 @ViewScoped
 public class BeanAltasUI implements Serializable {
-    // Aquí se declaran las propiedades que el bean va a utilizar para almacenar los datos ingresados en el formulario.
-
-    @NotNull(message = "El campo Nombre es obligatorio")
-    @Size(min = 1, message = "El campo Nombre es obligatorio")
+    
+    
+    
+    profesorHelper profHelp;
+    AsignacionHelper asigHelp;
     private String nombre;
 
     @NotNull(message = "El campo Apellido es obligatorio")
@@ -31,17 +29,26 @@ public class BeanAltasUI implements Serializable {
     private String rfc;
 
     Profesor nuevoProfesor = new Profesor();
-    ProfesorDAO profeDao = new ProfesorDAO();
     Integer idProfesorRegistrado;
     private Integer materiaSeleccionada;
     private boolean mostrarDialogo;
 
     // Métodos de inicialización
     public void init() {
-
+        profHelp = new profesorHelper();
+        asigHelp = new AsignacionHelper();
     }
 
-    //Getters y setters
+    public profesorHelper getProfHelp() {
+        return profHelp;
+    }
+
+    public void setProfHelp(profesorHelper profHelp) {
+        this.profHelp = profHelp;
+    }
+    
+    
+    
     public String getNombre() {
         return nombre;
     }
@@ -82,9 +89,26 @@ public class BeanAltasUI implements Serializable {
         this.materiaSeleccionada = materiaSeleccionada;
     }
 
-    // Getters y setters adicionales para controlar el diálogo
-    public boolean isMostrarDialogo() {
-        return mostrarDialogo;
+    // Método para guardar el profesor en la base de datos.
+    public void guardarProfesor() {
+        nuevoProfesor.setNombre(nombre);
+        nuevoProfesor.setApellido(apellido);
+        nuevoProfesor.setRfc(rfc);
+        
+        profesorHelper profHelp2 = new profesorHelper();
+        profHelp2.guardarProfesor(nuevoProfesor);
+
+        idProfesorRegistrado = nuevoProfesor.getIdprofesor();
+
+        // Crea una nueva asignación
+        Asignacion nuevaAsignacion = new Asignacion();
+        nuevaAsignacion.setIdprofesor(new Profesor(idProfesorRegistrado)); // Usar el ID del profesor
+        nuevaAsignacion.setIdmateria(new Materia(materiaSeleccionada)); // Usar la materia seleccionada
+
+        AsignacionHelper asigHelp2 = new AsignacionHelper();
+        asigHelp2.guardarAsignacion(nuevaAsignacion);
+
+        limpiarCampos();
     }
 
     public void setMostrarDialogo(boolean mostrarDialogo) {

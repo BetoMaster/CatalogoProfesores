@@ -13,6 +13,9 @@ import mx.cimadevs.entidad.Asignacion;
 import mx.cimadevs.entidad.Materia;
 import mx.cimadevs.entidad.Profesor;
 import mx.cimadevs.DAO.MateriaDAO;
+import mx.cimadevs.helper.AsignacionHelper;
+import mx.cimadevs.helper.MateriaHelper;
+import mx.cimadevs.helper.profesorHelper;
 
 
 @ManagedBean(name = "ModificarProfesorBean")
@@ -34,6 +37,9 @@ public class BeanModificarUI implements Serializable{
     MateriaDAO materiaDao = new MateriaDAO();
     private Integer idProfesorSeleccionado;
     private Integer idMateriaSeleccionada;
+    private profesorHelper profHelp;
+    private AsignacionHelper asigHelp;
+    private MateriaHelper matHelp;
 
     
     public BeanModificarUI(){
@@ -44,7 +50,8 @@ public class BeanModificarUI implements Serializable{
     @PostConstruct
     public void init() {
         // Cargar la lista de materias disponibles
-        List<Materia> materias = materiaDao.findAll();
+        matHelp = new MateriaHelper();
+        List<Materia> materias = matHelp.obtenerMaterias();
         materiasSelectItems = new ArrayList<>();
 
         for (Materia materia : materias) {
@@ -71,8 +78,8 @@ public class BeanModificarUI implements Serializable{
     }
     
     private void cargarProfesores() {
-        ProfesorDAO profesorDAO = new ProfesorDAO();
-        listaProfesores = profesorDAO.findAll();
+        profHelp = new profesorHelper();
+        listaProfesores = profHelp.obteneProfesor();
     }
     
     public List<Asignacion> getListaAsignaciones() {
@@ -80,8 +87,8 @@ public class BeanModificarUI implements Serializable{
     }
     
      private void cargarAsignaciones() {
-        AsignacionDAO asignacionDAO = new AsignacionDAO();
-        listaAsignaciones = asignacionDAO.findAll();
+        asigHelp = new AsignacionHelper();
+        listaAsignaciones = asigHelp.obtenerAsignacion();
     }
      
     public List<Profesor> getListaProfesores() {
@@ -139,23 +146,18 @@ public class BeanModificarUI implements Serializable{
     
           
     public void modificarAsignacion(){
-        AsignacionDAO asignacionDao = new AsignacionDAO();
-        asignacionDao.update(asignacion);
+        asigHelp = new AsignacionHelper();
+        asigHelp.modificarAsignacion(asignacion);
         asignacion = new Asignacion();
     }
     //Aqui se hace la actualizacion de los datos de profesor unicamente, funciona perfecto solo falta hacer que se modifique id materia
     //en tabla asignacion
-     public void modificarProfesor() {
-    if (asignacion != null) {
-        profeDao = new ProfesorDAO();
-        profeDao.update(asignacion.getIdprofesor());
-        // Aquí puedes realizar otras operaciones si es necesario
-        asignacion = new Asignacion(); // Reinicializar asignacion si es necesario
-    } else {
-        // Manejo de error o registro de información de depuración
-        System.err.println("Error: La asignación es nula al intentar modificar al profesor.");
+     public void modificarProfesor(){
+        profHelp = new profesorHelper();
+        profHelp.modificarProfesor(profesor);
+        profesor = new Profesor();
     }
-}
+
 
     private void initAsignacion() {
     asignacion = new Asignacion(); // Inicializa la asignación como un nuevo objeto
