@@ -33,7 +33,7 @@ and open the template in the editor.
                      display: flex;
                      flex-direction: column;
                      align-items: center;
-                     height: 350px;
+                     height: 450px;
                      margin: 7px;
                      border-radius: 20px;
                      border: 2px solid black;
@@ -41,24 +41,23 @@ and open the template in the editor.
                      font-family: verdana;
                      text-align: center;
                      ">
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                 <h:panelGrid columns="2">
                     <p:outputLabel value="Nombre" class="lbl"/>
-                    <p:inputText class="campos" required="true" value="#{profesorAltasBean.nombre}"/>
+                    <p:inputText class="campos"  value="#{profesorAltasBean.nombre}"/>
 
                     <p:outputLabel value="Apellido" class="lbl"/>
-                    <p:inputText class="campos" required="true" value="#{profesorAltasBean.apellido}" />
+                    <p:inputText class="campos"  value="#{profesorAltasBean.apellido}" />
 
                     <p:outputLabel value="RFC" class="lbl"/>
-                    <p:inputText class="campos" maxlength="13" required="true" value="#{profesorAltasBean.rfc}" />
+                    <p:inputText class="campos" maxlength="13" value="#{profesorAltasBean.rfc}" />
                     <p:outputLabel for="materia" value="Unidad de Aprendizaje" class="lbl" />
                     <p:selectOneMenu id="materia" class="campos" value="#{profesorAltasBean.materiaSeleccionada}">
                         <f:selectItems value="#{materiaAltasBean.materiasSelectItems}" />
                     </p:selectOneMenu>
+                    
 
-
-
-
-                    <h:panelGroup/>
+                   
 
                     <p:commandButton value="Guardar" action="#{profesorAltasBean.guardarProfesor}" ajax="false" 
                                      style="
@@ -71,11 +70,9 @@ and open the template in the editor.
                                      height: 40px; 
                                      width: 224px;
                                      font-family: verdana;
-                                     "
-                                     onclick="PF('dlg1').show();"/>
-                    <p:dialog header="Aviso" widgetVar="dlg1" minHeight="40">
-                        <h:outputText value="Registro Exitoso."/>
-                    </p:dialog>
+                                     "/>
+
+
                 </h:panelGrid>
             </p:panel>           
         </h:form>

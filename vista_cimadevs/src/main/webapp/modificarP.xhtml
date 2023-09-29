@@ -41,35 +41,35 @@ and open the template in the editor.
                      font-family: verdana;
                      ">
                 <!--Aqui se extraen los datos de la lista profesor -->
-                <p:dataTable id="tabla"  value="#{ModificarProfesorBean.listaProfesores}" var="asig" sortBy="#{asig.nombre}">
+                <p:dataTable id="tabla"  value="#{ModificarProfesorBean.listaAsignaciones}" var="asig" sortBy="#{asig.idprofesor.nombre}">
                     <p:column headerText="ID Profesor" class="col">
-                        <h:outputText value="#{asig.idprofesor}" />
+                        <h:outputText value="#{asig.idprofesor.idprofesor}" />
                     </p:column>
                 
                     <p:column headerText="NOMBRE" class="col">
-                        <h:outputText value="#{asig.nombre}" />
+                        <h:outputText value="#{asig.idprofesor.nombre}" />
                     </p:column>
                 
                     <p:column headerText="APELLIDO" class="col">
-                        <h:outputText value="#{asig.apellido}" />
+                        <h:outputText value="#{asig.idprofesor.apellido}" />
                     </p:column>
                 
                     <p:column headerText="RFC" class="col">
-                        <h:outputText value="#{asig.rfc}" />
+                        <h:outputText value="#{asig.idprofesor.rfc}" />
                     </p:column>
                     
                 <!--Esto es lo de la busqueda para que funcione tendria que tener lo de listaAsignaciones.Idmateria.nombreMateria -->
-                    <!--
-                    <p:column headerText="MATERIA(S)" class="col" filterBy="#{asig.idmateria.nombreMateria}" filterMatchMode="contains">
+                    
+                    <p:column headerText="MATERIA(S)" class="col" filterBy="#{asig.idmateria.nombreDeLaMateria}" filterMatchMode="contains">
                         <h:outputText value="#{asig.idmateria.nombreDeLaMateria}" />
                      </p:column>
-                    -->
+
                     
                     <!--Aqui es donde se mandan los datos de los profesores a lasa  -->
                     <p:column  class="col">
                         <p:commandButton value="Modificar" oncomplete="PF('dlgModificar').show();" update=":formModificar" style="background-color: rgba(234, 170, 0, 1);border-radius: 15px;
                                  font-family: verdana; cursor: pointer; color:black;">
-                            <f:setPropertyActionListener target="#{ModificarProfesorBean.profesor}" value="#{asig}"/>
+                            <f:setPropertyActionListener target="#{ModificarProfesorBean.asignacion}" value="#{asig}"/>
                         </p:commandButton>
                     </p:column>
                     
@@ -92,17 +92,14 @@ and open the template in the editor.
             <h:form id="formModificar">
                 <h:panelGrid columns="2">
                     <p:outputLabel value="Nombre" class="lbl"/>
-                    <p:inputText class="campos" required="true" value="#{ModificarProfesorBean.profesor.nombre}"/>
+                    <p:inputText class="campos" required="true" value="#{ModificarProfesorBean.asignacion.idprofesor.nombre}"/>
 
                     <p:outputLabel value="Apellido" class="lbl"/>
-                    <p:inputText class="campos" required="true" value="#{ModificarProfesorBean.profesor.apellido}" />
+                    <p:inputText class="campos" required="true" value="#{ModificarProfesorBean.asignacion.idprofesor.apellido}" />
 
                     <p:outputLabel value="RFC" class="lbl"/>
-                    <p:inputText class="campos" maxlength="13" required="true" value="#{ModificarProfesorBean.profesor.rfc}" />
-                    <p:outputLabel for="materia" value="Unidad de Aprendizaje" class="lbl" />
-                    <p:selectOneMenu id="materia" class="campos" value="#{ModificarProfesorBean.materiaSeleccionada}">
-                        <f:selectItems value="#{ModificarProfesorBean.materiasSelectItems}" />
-                    </p:selectOneMenu>
+                    <p:inputText class="campos" maxlength="13" required="true" value="#{ModificarProfesorBean.asignacion.idprofesor.rfc}" />
+                   
 
                     <h:panelGroup/>
                     

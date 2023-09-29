@@ -57,6 +57,10 @@ public class BeanModificarUI implements Serializable{
         for (Materia materia : materias) {
             materiasSelectItems.add(new SelectItem(materia.getIdmateria(), materia.getNombreDeLaMateria()));
         }
+        
+        cargarAsignaciones();
+        initAsignacion(); // Inicializa la asignación aquí
+        
     }
 
     public Profesor getProfesor() {
@@ -153,5 +157,10 @@ public class BeanModificarUI implements Serializable{
         profHelp.modificarProfesor(profesor);
         profesor = new Profesor();
     }
+
+
+    private void initAsignacion() {
+    asignacion = new Asignacion(); // Inicializa la asignación como un nuevo objeto
+}
      
 }
